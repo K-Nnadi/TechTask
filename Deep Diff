@@ -1,0 +1,9 @@
+var deep = require('../');
+
+var ecommerceSite = newOrders[];
+var ecommerceAPI = Orders[];
+
+        
+var differences = deep.diff(ecommerceSite, ecommerceAPI);
+differences.forEach(function (change) {
+deep.applyChange(ecommerceAPI , true, change);
