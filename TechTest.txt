@@ -84,7 +84,7 @@ public processNewERPOrder = async (newOrder: order) => {
 
 
 })
-
+}
 //Poller gave multiple new orders
 
 public processNewERPOrder = async (newOrders: order[]) => {
@@ -144,7 +144,3 @@ public processNewERPOrder = async (newOrders: order[]) => {
 
 }
 }	
-
-
-
-}
