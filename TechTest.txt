@@ -1,0 +1,92 @@
+Step 7
+
+Usecase: Poller gave one new order
+
+1. create new order on E-commerce Api 
+
+   public processNewOrder = async (newOrder: order) => {
+	
+		const order = await orderService.create(newOrder)
+		
+		return order
+
+}
+
+
+Usecase: Poller gave multiple new orders
+
+2. create new order on E-commerce Api 
+
+public processNewOrder = async (newOrders: order[]) => {
+	
+	return newOrders.map( order => {
+
+	const newOrder = await orderService.create(order)
+		
+	return newOrder
+})
+
+}
+
+
+step 8
+
+Usecase: Poller gave one new order
+
+
+public processNewERPOrder = async (newOrder: order) => {
+
+	const newCustomer = await customerService.create({
+		no: '123445';
+		name: newOrder.customerName;
+})
+
+	const newShipToAddress = await shipToAddress.create({
+		customerNo: customer.no
+		address1: newOrder.shippingAddress.addr1
+		address2: newOrder.shippingAddress.addr2
+		townCity: newOrder.shippingAddress.townCity
+		postcode: newOrder.shippingAddress.postcode
+})
+
+	const newSalesOrder = await salesOrderService.create({
+		no: '123455';
+		lines: [];
+		amount: newOrder.totalPrice;
+		customer: newCustomer;
+		shipToAddress: newShipToAddress;
+})
+
+	const items = newOrder.lineItems.map(async (product) => {
+		
+	const newItem = await itemService.create({
+		No: '21655'
+		Name: product.name.
+		Description: 'whatever'
+		Inventory: 12
+		Unit_Cost: ??
+		Unit_Price: product.price
+	})
+
+	const itemsCrossRef = await itemsCrossRefService.create({
+		itemNo: newItem.no (21655)
+		referenceNo: product.id
+	})
+})
+	
+
+	const saleOrderLine = await salesOrderLineService.create({
+		no: '1213423';
+		salesOrderNo: newSalesOrder.no;
+		quantity: newOrder.lineitems[x].quantity | newOrder.lineItem.length;
+		unitPrice: newOrder.lineItems[x].price
+})
+
+
+})
+
+	
+
+
+
+}
